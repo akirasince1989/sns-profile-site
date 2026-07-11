@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans JP", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #123;
+  background: #f5f7fb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%); }
+
+a { color: #0c6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.hero {
+  padding: 4rem 1.25rem 2rem;
+  background: linear-gradient(135deg, #0f6fff 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.hero__content { max-width: 960px; margin: 0 auto; }
+.eyebrow { opacity: 0.9; font-size: 0.95rem; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 0.5rem; }
+.subtitle { font-size: 1.1rem; margin-top: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.actions a {
+  background: rgba(255,255,255,0.16);
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+main { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+.section { margin-bottom: 2rem; }
+.section h2 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+.card h3 { margin-top: 0; margin-bottom: 0.35rem; }
+.card ul { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; margin: 0.75rem 0 0; list-style: none; }
