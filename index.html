@@ -13,6 +13,12 @@
   <body>
     <header class="hero">
       <div class="hero__content">
+        <svg class="logo" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="10" width="160" height="90" fill="none" stroke="white" stroke-width="3" rx="4"/>
+          <rect x="140" y="35" width="30" height="55" fill="white" rx="2"/>
+          <text x="60" y="45" font-size="28" font-weight="bold" fill="white" font-family="'Hiragino Sans W4', 'Segoe UI', 'Noto Sans JP'">チーム</text>
+          <text x="60" y="75" font-size="28" font-weight="bold" fill="white" font-family="'Hiragino Sans W4', 'Segoe UI', 'Noto Sans JP'">みらい</text>
+        </svg>
         <p class="eyebrow">国会議員団</p>
         <h1>チームみらい</h1>
         <p class="subtitle">衆議院・参議院の議員プロフィールをまとめています。</p>
@@ -31,9 +37,28 @@
         </p>
       </section>
 
+      <section class="section region-selector">
+        <h2>選挙区を選択</h2>
+        <div class="region-map">
+          <button class="region-btn" data-region="all" style="grid-column: 1 / -1;">全て表示</button>
+          <button class="region-btn" data-region="hokkaido">北海道</button>
+          <button class="region-btn" data-region="tohoku">東北</button>
+          <button class="region-btn" data-region="kitakanto">北関東</button>
+          <button class="region-btn" data-region="tokyo">東京</button>
+          <button class="region-btn" data-region="minami-kanto">南関東</button>
+          <button class="region-btn" data-region="chubu">中部</button>
+          <button class="region-btn" data-region="kansai">近畿</button>
+          <button class="region-btn" data-region="chugoku">中国</button>
+          <button class="region-btn" data-region="shikoku">四国</button>
+          <button class="region-btn" data-region="kyushu">九州</button>
+          <button class="region-btn" data-region="sangiin">参議院</button>
+        </div>
+        <p class="region-text">選挙区を選択してください</p>
+      </section>
+
       <section class="section">
         <div class="grid">
-          <article class="card">
+          <article class="card" data-region="sangiin">
             <div class="card__image">
               <img src="images/anno.jpg" alt="安野 貴博" />
             </div>
@@ -50,7 +75,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="tokyo">
             <div class="card__image">
               <img src="images/usami.jpg" alt="宇佐美 登" />
             </div>
@@ -65,7 +90,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="minami-kanto">
             <div class="card__image">
               <img src="images/kawai.jpg" alt="河合 道雄" />
             </div>
@@ -83,7 +108,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="minami-kanto">
             <div class="card__image">
               <img src="images/kobayashi.jpg" alt="小林 修平" />
             </div>
@@ -100,7 +125,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="chubu">
             <div class="card__image">
               <img src="images/suda.jpg" alt="須田 英太郎" />
             </div>
@@ -119,7 +144,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="tokyo">
             <div class="card__image">
               <img src="images/takayama.jpg" alt="高山 聡史" />
             </div>
@@ -137,7 +162,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="tokyo">
             <div class="card__image">
               <img src="images/dobashi.jpg" alt="土橋 章宏" />
             </div>
@@ -156,7 +181,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="tohoku">
             <div class="card__image">
               <img src="images/hayashi.jpg" alt="林 拓海" />
             </div>
@@ -172,7 +197,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="kyushu">
             <div class="card__image">
               <img src="images/furukawa.jpg" alt="古川 あおい" />
             </div>
@@ -191,7 +216,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="tokyo">
             <div class="card__image">
               <img src="images/mineshima.jpg" alt="峰島 侑也" />
             </div>
@@ -212,7 +237,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="kitakanto">
             <div class="card__image">
               <img src="images/muto.jpg" alt="武藤 かず子" />
             </div>
@@ -230,7 +255,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card" data-region="minami-kanto">
             <div class="card__image">
               <img src="images/yamada.jpg" alt="山田 瑛理" />
             </div>
@@ -250,5 +275,35 @@
         </div>
       </section>
     </main>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const regionBtns = document.querySelectorAll('.region-btn');
+        const cards = document.querySelectorAll('.card');
+
+        // Set initial active button
+        document.querySelector('[data-region="all"]').classList.add('active');
+
+        regionBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const selectedRegion = this.getAttribute('data-region');
+
+            // Update active button
+            regionBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter cards
+            cards.forEach(card => {
+              const cardRegion = card.getAttribute('data-region');
+              if (selectedRegion === 'all' || cardRegion === selectedRegion) {
+                card.classList.remove('hidden');
+              } else {
+                card.classList.add('hidden');
+              }
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>
